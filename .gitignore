@@ -7,6 +7,7 @@ logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
 # Runtime data
 pids
@@ -22,28 +23,9 @@ pids
 dist/
 build/
 
-# VS Code settings
-.vscode/
-
-# OS generated files
-.DS_Store
-Thumbs.db
-ehthumbs.db
-Icon?
-
-# Windows specific
-desktop.ini
-
-# Mac specific
-.AppleDouble
-.LSOverride
-
 # Coverage reports
 coverage/
 *.lcov
-
-# Optional npm cache directory
-.npm/
 
 # Parcel cache
 .cache/
@@ -54,13 +36,48 @@ coverage/
 # React Native
 .expo/
 
-# Logs from Playwright/Cypress
+# Test artifacts
 test-results/
 cypress/screenshots/
 cypress/videos/
+jest/
+jest-cache/
+jest-results.json
+
+# Package manager lock files (Optional: keep one if needed)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# IDE and Editor files
+.vscode/
+.idea/
+.vs/
+*.sublime-project
+*.sublime-workspace
 
 # GitHub Copilot/AI suggestions (optional)
 *.code-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+desktop.ini
+.AppleDouble
+.LSOverride
+
+# Backup and temp files
+*.bak
+*.tmp
+*.swp
+*.swo
+
+# Deployment & Docker files
+.dockerignore
+Dockerfile
+docker-compose*.yml
 
 # Others
 *.tgz
