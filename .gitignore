@@ -1,5 +1,6 @@
-# Node modules
-node_modules/
+# Ignore all node_modules in any subdirectory
+**/node_modules/
+
 
 # Logs
 logs/
