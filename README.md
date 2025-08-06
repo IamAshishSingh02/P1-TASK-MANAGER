@@ -93,6 +93,8 @@ node server.js
 ![Task Manager UI](./public/task-manager1.png)
 ##
 ![Task Manager UI](./public/task-manager2.png)
+##
+![Task Manager UI](./public/task-manager3.png)
 
 ---
 
