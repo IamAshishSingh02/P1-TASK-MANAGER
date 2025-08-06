@@ -1,22 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Task Manager</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Task Manager</h1>
-  <div id="auth">
+  <h1 class="title">Task Manager</h1>
+
+  <!-- Authentication Section -->
+  <div id="auth" class="card">
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
-    <button onclick="register()">Register</button>
-    <button onclick="login()">Login</button>
+    <div class="btn-group">
+      <button onclick="register()">Register</button>
+      <button onclick="login()">Login</button>
+    </div>
   </div>
-  <div id="tasks" style="display:none;">
-    <input type="text" id="taskTitle" placeholder="New Task">
-    <button onclick="addTask()">Add Task</button>
+
+  <!-- Tasks Section -->
+  <div id="tasks" class="card" style="display:none;">
+    <div class="task-input">
+      <input type="text" id="taskTitle" placeholder="New Task">
+      <button onclick="addTask()" class="add-btn">Add Task</button>
+    </div>
     <ul id="taskList"></ul>
   </div>
+
   <script src="app.js"></script>
 </body>
 </html>
