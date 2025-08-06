@@ -46,7 +46,6 @@ jest-cache/
 jest-results.json
 
 # Package manager lock files (Optional: keep one if needed)
-package-lock.json
 yarn.lock
 pnpm-lock.yaml
 
