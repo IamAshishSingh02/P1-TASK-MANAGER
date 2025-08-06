@@ -47,6 +47,7 @@ async function login() {
     localStorage.setItem('token', token); // save token for later
     document.getElementById('auth').style.display = 'none';
     document.getElementById('tasks').style.display = 'block';
+    document.getElementById('logoutBtn').style.display = 'block'; // show logout
     loadTasks();
   } else {
     const error = await res.json();
@@ -71,13 +72,20 @@ async function loadTasks() {
 
   tasks.forEach(task => {
     const li = document.createElement('li');
+    li.classList.add('task-item'); // Apply flex styling
+    if (task.completed) {
+      li.classList.add('completed'); // Add class for styling (optional)
+    }
+
     li.innerHTML = `
-      ${task.completed ? `<s>${task.title}</s>` : task.title}
-      <button onclick="toggleTask('${task._id}', ${!task.completed})">
-        ${task.completed ? 'Undo' : 'Complete'}
-      </button>
-      <button onclick="editTaskPrompt('${task._id}', '${task.title.replace(/'/g, "\\'")}')">Edit</button>
-      <button onclick="deleteTask('${task._id}')">Delete</button>
+      <span class="task-title">${task.title}</span>
+      <div class="task-actions">
+        <button onclick="toggleTask('${task._id}', ${!task.completed})">
+          ${task.completed ? 'Undo' : 'Complete'}
+        </button>
+        <button onclick="editTaskPrompt('${task._id}', '${task.title.replace(/'/g, "\\'")}')">Edit</button>
+        <button onclick="deleteTask('${task._id}')">Delete</button>
+      </div>
     `;
     list.appendChild(li);
   });
@@ -169,9 +177,19 @@ async function editTask(id, newTitle) {
   }
 }
 
+// LOGOUT FUNCTION
+function logout() {
+  localStorage.removeItem('token'); // clear saved token
+  token = ''; // reset token
+  document.getElementById('auth').style.display = 'block';
+  document.getElementById('tasks').style.display = 'none';
+  document.getElementById('logoutBtn').style.display = 'none';
+}
+
 // ✅ Auto-login if token exists
 if (token) {
   document.getElementById('auth').style.display = 'none';
   document.getElementById('tasks').style.display = 'block';
+  document.getElementById('logoutBtn').style.display = 'block'; // show logout
   loadTasks();
 }

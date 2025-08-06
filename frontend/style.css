@@ -1,41 +1,61 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@500;700&display=swap');
+
 /* Global Styles */
 body {
-  font-family: Arial, sans-serif;
-  background: #f4f6f8;
+  font-family: 'Montserrat', sans-serif;
+  background: #121212;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #f1f1f1;
 }
 
 .title {
   margin: 30px 0 10px;
-  font-size: 32px;
-  color: #333;
+  font-size: 36px;
+  font-weight: 600;
+  color: #ffffff;
 }
 
 /* Card Styling */
 .card {
-  background: #fff;
+  background: #1f1f1f;
   padding: 20px;
   margin: 10px;
-  width: 400px;
-  border-radius: 8px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  width: 80%;
+  max-width: 800px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 /* Input Fields */
 input[type="text"], input[type="password"] {
   width: 90%;
-  padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 6px;
   font-size: 16px;
+  background: #2a2a2a;
+  color: #f1f1f1;
+  outline: none;
+}
+
+input::placeholder {
+  color: #b3b3b3;
 }
 
 /* Button Styling */
@@ -43,13 +63,15 @@ button {
   padding: 10px 15px;
   margin: 5px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 15px;
+  transition: all 0.3s ease-in-out;
 }
 
 button:hover {
-  opacity: 0.9;
+  transform: scale(1.07);
 }
 
 .btn-group button {
@@ -62,6 +84,18 @@ button:hover {
   color: white;
 }
 
+#logoutBtn {
+  background: #6c757d;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#logoutBtn:hover {
+  background: #5a6268;
+}
+
 /* Task List */
 ul {
   list-style: none;
@@ -69,24 +103,70 @@ ul {
   width: 100%;
 }
 
-li {
+/* Each Task Item */
+.task-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f1f1f1;
-  padding: 10px;
+  background: #2c2c2c;
+  padding: 12px;
   margin: 8px 0;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 16px;
+  color: #f1f1f1;
+  transition: background 0.3s ease;
 }
 
-/* Buttons inside list */
-li button {
-  margin-left: 5px;
-  padding: 5px 8px;
+.task-item:hover {
+  background: #333333;
+}
+
+/* Stylish Task Title */
+.task-title {
+  flex: 1;
+  word-break: break-word;
+  font-size: 18px;
+  font-family: 'Latin Modern Roman', serif;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+/* Add ✔ after text for completed tasks */
+.task-item.completed .task-title::after {
+  content: " ✔";
+  color: #00ff7f;
+  font-weight: bold;
+  margin-left: 6px;
+  font-size: 18px;
+}
+
+/* Completed Task Styling */
+.task-item.completed .task-title {
+  color: #00ff7f;
+  font-weight: 600;
+}
+
+/* Buttons aligned on the right */
+.task-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.task-actions button {
+  padding: 6px 10px;
   font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
-li button:nth-child(2) { background: #007bff; color: #fff; } /* Complete */
-li button:nth-child(3) { background: #ffc107; color: #000; } /* Edit */
-li button:nth-child(4) { background: #dc3545; color: #fff; } /* Delete */
+.task-actions button:hover {
+  transform: scale(1.05);
+}
+
+/* Different button colors */
+.task-actions button:nth-child(1) { background: #007bff; color: white; } /* Complete */
+.task-actions button:nth-child(2) { background: #ffc107; color: black; } /* Edit */
+.task-actions button:nth-child(3) { background: #dc3545; color: white; } /* Delete */
